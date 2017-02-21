@@ -38,8 +38,8 @@ elif lsb_release -d | grep -q "Kali"; then
 	pip install pyinstaller
 elif lsb_release -d | grep -q "Ubuntu"; then
 	Release=Ubuntu
-	apt-get install python-pip python-dev build-essential 
-	pip install --upgrade pip 
+	apt-get install python-pip python-dev build-essential
+	pip install --upgrade pip
 	apt-get install python-m2crypto
 	apt-get install swig
 	pip install zlib_wrapper
@@ -49,10 +49,22 @@ elif lsb_release -d | grep -q "Ubuntu"; then
 	pip install macholib
 	pip install flask
 	pip install pyinstaller
+elif lsb_release -d | grep -q "Alpine"; then
+  Release=Alpine
+  apk add python py-pip py-openssl py-crypto libffi-dev py-cryptography py-cffi
+  pip install --upgrade pip
+  pip install zlib_wrapper
+	pip install iptools
+	pip install pydispatcher
+	pip install macholib
+	pip install flask
+	pip install pyinstaller
+  pip install enum34
+  pip install six
 else
 	echo "Unknown distro - Debian/Ubuntu Fallback"
-	 apt-get install python-pip python-dev build-essential 
-	 pip install --upgrade pip 
+	 apt-get install python-pip python-dev build-essential
+	 pip install --upgrade pip
 	 apt-get install python-m2crypto
 	 apt-get install swig
 	 pip install zlib_wrapper
